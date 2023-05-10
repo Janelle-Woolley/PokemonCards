@@ -89,7 +89,15 @@ public class GUI {
     return monValue; // returns input
   }
   
-  // method to get image input
+  /**
+   * Asks user for card image input.
+   */
+  public String askImage() {
+    // ask for input
+    String imgFileName = UIFileChooser.open("Choose Card Image File: ");
+    // returns input
+    return imgFileName;
+  }
   // method to add inputs to hashmap
   // method to clear text pane
   // method to clear graphics pane
