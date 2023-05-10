@@ -1,4 +1,5 @@
 import ecs100.*;
+import java.util.*;
 /**
  * Class handles GUI functions.
  * Buttons and Displaying images and Text
@@ -49,6 +50,35 @@ public class GUI {
     // checks if the input is already in the hashmap
   }
   // method to get price input
+  /**
+   * Asks user for card's monetary value input.
+   */
+  public float askMonValue() {
+    boolean gettingMonValue = true; // boolean for looping
+    float monValue = 0; // declare and initialise variable for santised input
+    String checkMonValue = ""; // declare and initialise string for holding input
+    
+    // declare and initialise scanner to scan string input
+    Scanner isFloat = new Scanner(checkMonValue);
+    
+    checkMonValue = UI.askString("Enter the card's monetary value: $"); // ask for input
+    
+    // loops until input is valid
+    while (gettingMonValue) {
+      isFloat = new Scanner(checkMonValue); // creates new scanner object to ensure buffer gets cleared
+      
+      // checks if input contains a float
+      if (isFloat.hasNextFloat()) {
+          monValue = isFloat.nextFloat();
+          gettingMonValue = false;
+      } else { // otherwise continue looping
+          checkMonValue = UI.askString("Enter the card's monetary value: $");
+      }
+    }
+      
+    return monValue; // returns input
+  }
+  
   // method to get image input
   // method to add inputs to hashmap
   // method to clear text pane
