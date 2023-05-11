@@ -21,7 +21,7 @@ public class GUI {
     
     // create buttons
     UI.addButton("Quit", UI::quit);  // quit button
-      // add card button
+    UI.addButton("Add Card", this::addCard);  // add card button
       // hide details button
       // show all cards details buttons
       // search button
@@ -30,6 +30,8 @@ public class GUI {
   
   /**
    * Asks user for card name input.
+
+   * @return String name input
    */
   public String askName() {
     boolean gettingName = true; // boolean for looping
@@ -52,29 +54,31 @@ public class GUI {
 
   /**
    * Asks user for card's monetary value input.
+
+   * @return double monValue input
    */
-  public float askMonValue() {
+  public double askMonValue() {
     boolean gettingMonValue = true; // boolean for looping
     
     // max and min values for the monetary value
-    final float MAX_MON_VALUE = 5275000;
-    final float MIN_MON_VALUE = 0;
+    final int MAX_MON_VALUE = 5275000;
+    final int MIN_MON_VALUE = 0;
     
-    float monValue = 0; // declare and initialise variable for santised input
+    double monValue = 0; // declare and initialise variable for santised input
     String checkMonValue = ""; // declare and initialise string for holding input
     
     // declare and initialise scanner to scan string input
-    Scanner isFloat = new Scanner(checkMonValue);
+    Scanner isDouble = new Scanner(checkMonValue);
     
     checkMonValue = UI.askString("Enter the card's monetary value: "); // ask for input
     
     // loops until input is valid
     while (gettingMonValue) {
-      isFloat = new Scanner(checkMonValue); // creates new scanner object to ensure buffer gets cleared
+      isDouble = new Scanner(checkMonValue); // creates new scanner object to ensure buffer gets cleared
       
-      // checks if input contains a float
-      if (isFloat.hasNextFloat()) {
-        monValue = isFloat.nextFloat();
+      // checks if input contains a double
+      if (isDouble.hasNextDouble()) {
+        monValue = isDouble.nextDouble();
         // checks if the input is the range of expected options
         if (monValue > MIN_MON_VALUE && monValue < MAX_MON_VALUE){  
           gettingMonValue = false;
@@ -91,6 +95,8 @@ public class GUI {
   
   /**
    * Asks user for card image input.
+
+   * @return String imageFileName input
    */
   public String askImage() {
     // ask for input
@@ -100,13 +106,12 @@ public class GUI {
     return imgFileName;
   }
   
-  // method to add inputs to hashmap
   /**
-   * Collects inputs add adds them to hashmap
+   * Collects inputs add adds them to hashmap.
    */
   public void addCard() {
     String name = askName(); // get card name input
-    Float monValue = askMonValue(); // get card monetary value
+    double monValue = askMonValue(); // get card monetary value
     String image = askImage(); // get card image
     
     cardStack.addCard(name, monValue, image); // add inputs to hashmap

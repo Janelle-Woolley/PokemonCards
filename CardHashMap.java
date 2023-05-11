@@ -20,9 +20,9 @@ public class CardHashMap {
   }
   
   /**
-   * Adds a card to the hashmap
+   * Adds a card to the hashmap.
    */
-  public void addCard(String name, Float monValue, String image) {
+  public void addCard(String name, double monValue, String image) {
     currentId++;// update current id
     cardHashMap.put(currentId, new Card(name, monValue, image)); // add card to hashmap
   }

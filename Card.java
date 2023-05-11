@@ -10,7 +10,7 @@
 public class Card {
   // variables for card details
   private String cardName;
-  private float cardMonataryValue;
+  private double cardMonataryValue;
   private String cardImage;
   private static final String DEFAULTIMAGE = "default.jpg";
   private boolean cardDisplayed;
@@ -18,7 +18,7 @@ public class Card {
   /**
    * Constructor for objects of class Card.
    */
-  public Card(String name, float CardValue, String image) {
+  public Card(String name, double CardValue, String image) {
     // intailise the variables for card details
     this.cardName = name;
     this.cardMonataryValue = CardValue;
@@ -35,7 +35,7 @@ public class Card {
   /**
    * Consructor overloading for objects of class Card.
    */
-  public Card(String name, float cardValue) {
+  public Card(String name, double cardValue) {
     this(name, cardValue, null);
   }
   
