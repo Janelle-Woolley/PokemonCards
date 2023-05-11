@@ -94,11 +94,24 @@ public class GUI {
    */
   public String askImage() {
     // ask for input
-    String imgFileName = UIFileChooser.open("Choose Card Image File: ");
+    UI.println("Choose Card Image File: ");
+    String imgFileName = UIFileChooser.open();
     // returns input
     return imgFileName;
   }
+  
   // method to add inputs to hashmap
+  /**
+   * Collects inputs add adds them to hashmap
+   */
+  public void addCard() {
+    String name = askName(); // get card name input
+    Float monValue = askMonValue(); // get card monetary value
+    String image = askImage(); // get card image
+    
+    cardStack.addCard(name, monValue, image); // add inputs to hashmap
+  }
+  
   // method to clear text pane
   // method to clear graphics pane
   // method to diplay card image & details

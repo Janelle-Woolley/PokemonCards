@@ -19,7 +19,14 @@ public class CardHashMap {
     currentId = 0; // intalise the currentId
   }
   
+  /**
+   * Adds a card to the hashmap
+   */
+  public void addCard(String name, Float monValue, String image) {
+    currentId++;// update current id
+    cardHashMap.put(currentId, new Card(name, monValue, image)); // add card to hashmap
+  }
+  
   // create method to check if a name matches one in the hashmap
-  // create method to add card to hashmap
   // create method to loop through hashmap to print card details
 }
