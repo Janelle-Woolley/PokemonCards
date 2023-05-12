@@ -27,6 +27,23 @@ public class CardHashMap {
     cardHashMap.put(currentId, new Card(name, monValue, image)); // add card to hashmap
   }
   
-  // create method to check if a name matches one in the hashmap
+  /**
+   * Loops through hashmap. 
+   * Compares an input to card name values in hashmap
+
+   * @return boolean if parameter matches a name
+   */
+  public boolean compareCard(String name) {
+    // loop through hashmap
+    for (int cardId : cardHashMap.keySet()) {
+      // checks if parameter matches the card's name
+      if (cardHashMap.get(cardId).getCardName().equals(name)) {
+        return true; 
+      }
+    }
+    
+    return false; // if parameter doesn't match any card names
+  }
+  
   // create method to loop through hashmap to print card details
 }

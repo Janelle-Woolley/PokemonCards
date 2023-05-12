@@ -39,6 +39,15 @@ public class Card {
     this(name, cardValue, null);
   }
   
+  /**
+   * Getter for card name
+
+   * @return cardName
+   */
+  public String getCardName() {
+    return this.cardName;
+  }
+  
   // create method to display card details in text pane
   // create method to display card image in GUI
 }

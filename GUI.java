@@ -42,6 +42,9 @@ public class GUI {
       // checks if the input is just whitespaces
       if (name.isBlank()) {
         name = UI.askString("Enter the card name: ");
+      } else if (cardStack.compareCard(name.toUpperCase())) {
+        UI.println("Card already in collection");
+        name = UI.askString("Enter a new card name: ");
       } else { // otherwise input is valid and loop ends
         gettingName = false;
       }
@@ -114,7 +117,7 @@ public class GUI {
     double monValue = askMonValue(); // get card monetary value
     String image = askImage(); // get card image
     
-    cardStack.addCard(name, monValue, image); // add inputs to hashmap
+    cardStack.addCard(name.toUpperCase(), monValue, image); // add inputs to hashmap
   }
   
   // method to clear text pane
