@@ -45,5 +45,14 @@ public class CardHashMap {
     return false; // if parameter doesn't match any card names
   }
   
-  // create method to loop through hashmap to print card details
+  /**
+   * Loops through hashmap printing out card details.
+   */
+  public void printAllDetails() {
+    // loops through hashmap
+    for (int cardId : cardHashMap.keySet()) {
+      currCard = cardHashMap.get(cardId);
+      currCard.printDetails();
+    }
+  }
 }

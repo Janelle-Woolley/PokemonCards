@@ -1,4 +1,4 @@
-
+import ecs100.*;
 /**
  * Support class for GUI and CardHashMap.
  * Creates Cards
@@ -10,7 +10,7 @@
 public class Card {
   // variables for card details
   private String cardName;
-  private double cardMonataryValue;
+  private double cardMonetaryValue;
   private String cardImage;
   private static final String DEFAULTIMAGE = "default.jpg";
   private boolean cardDisplayed;
@@ -21,7 +21,7 @@ public class Card {
   public Card(String name, double CardValue, String image) {
     // intailise the variables for card details
     this.cardName = name;
-    this.cardMonataryValue = CardValue;
+    this.cardMonetaryValue = CardValue;
     this.cardDisplayed = false;
     
     // if the user selects cancel instead of and image
@@ -48,6 +48,15 @@ public class Card {
     return this.cardName;
   }
   
-  // create method to display card details in text pane
+  /**
+   * Prints out card's details.
+   */
+  public void printDetails() {
+    UI.println("---------------------");
+    UI.println("Name: " + this.cardName);
+    UI.println("Monetary Value: " + this.cardMonetaryValue);
+    UI.println("---------------------");
+  }
+  
   // create method to display card image in GUI
 }

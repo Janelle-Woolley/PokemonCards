@@ -23,7 +23,7 @@ public class GUI {
     UI.addButton("Quit", UI::quit);  // quit button
     UI.addButton("Add Card", this::addCard);  // add card button
       // hide details button
-      // show all cards details buttons
+    UI.addButton("Show All Details", this::printAll);  // show all cards details buttons
       // search button
     // create mouse listener
   }
@@ -42,7 +42,7 @@ public class GUI {
       // checks if the input is just whitespaces
       if (name.isBlank()) {
         name = UI.askString("Enter the card name: ");
-      } else if (cardStack.compareCard(name.toUpperCase())) {
+      } else if (cardStack.compareCard(name.toUpperCase())) { // checks if the input is already in the hashmap
         UI.println("Card already in collection");
         name = UI.askString("Enter a new card name: ");
       } else { // otherwise input is valid and loop ends
@@ -50,9 +50,6 @@ public class GUI {
       }
     }
     return name; // returns input
-    
-    // TO ADD:
-    // checks if the input is already in the hashmap
   }
 
   /**
@@ -120,7 +117,14 @@ public class GUI {
     cardStack.addCard(name.toUpperCase(), monValue, image); // add inputs to hashmap
   }
   
+  /**
+   * Prints out all the cards details.
+   */
+  public void printAll() {
+    cardStack.printAllDetails();
+  }
+  
   // method to clear text pane
   // method to clear graphics pane
-  // method to diplay card image & details
+  // method to diplay card image & details 
 }
