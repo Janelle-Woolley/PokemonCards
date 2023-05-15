@@ -59,7 +59,7 @@ public class Card {
   }
   
   /**
-   * Displays card image in GUI
+   * Displays card image in graphics pane
    */
   public void displayImage() {
     // declare and initialise constant variables

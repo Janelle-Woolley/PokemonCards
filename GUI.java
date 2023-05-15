@@ -22,7 +22,7 @@ public class GUI {
     // create buttons
     UI.addButton("Quit", UI::quit);  // quit button
     UI.addButton("Add Card", this::addCard);  // add card button
-      // hide details button
+    UI.addButton("Hide Details", this::clearTextPane);  // hide details button
     UI.addButton("Show All Details", this::printAll);  // show all cards details buttons
     UI.addButton("Search", this::search);  // search button
     // create mouse listener
@@ -135,6 +135,10 @@ public class GUI {
       // gets the current card
       card = cardStack.getCard();
       
+      // clear screen for printing
+      clearTextPane();
+      clearGraphicsPane();
+      
       card.printDetails(); // prints details
       card.displayImage(); // displays image
       card.setDisplay(true); // sets display to true 
@@ -143,6 +147,18 @@ public class GUI {
     }
   }
   
-  // method to clear text pane
-  // method to clear graphics pane
+  /**
+   * Clears text pane
+   */
+  public void clearTextPane() {
+    UI.clearText();
+  }
+  
+  /**
+   * Clears graphics pane
+   */
+  public void clearGraphicsPane() {
+    card.setDisplay(false); // set displaying card image to false
+    UI.clearGraphics();
+  }
 }
