@@ -25,7 +25,9 @@ public class GUI {
     UI.addButton("Hide Details", this::clearTextPane);  // hide details button
     UI.addButton("Show All Details", this::printAll);  // show all cards details buttons
     UI.addButton("Search", this::search);  // search button
+    
     // create mouse listener
+    UI.setMouseListener(this::doMouse);
   }
   
   /**
@@ -125,7 +127,7 @@ public class GUI {
   }
   
   /**
-   * Displays details and image of a card the user wants
+   * Displays details and image of a card the user wants.
    */
   public void search() {
     String findCard = UI.askString("Enter card name to search for: "); // ask for input
@@ -141,24 +143,38 @@ public class GUI {
       
       card.printDetails(); // prints details
       card.displayImage(); // displays image
-      card.setDisplay(true); // sets display to true 
     } else { // otherwise print error message
       UI.println("Card not Found!");
     }
   }
   
   /**
-   * Clears text pane
+   * Clears text pane.
    */
   public void clearTextPane() {
     UI.clearText();
   }
   
   /**
-   * Clears graphics pane
+   * Clears graphics pane.
    */
   public void clearGraphicsPane() {
-    card.setDisplay(false); // set displaying card image to false
+    card = null;
     UI.clearGraphics();
+  }
+  
+  /**
+   * Mouse listener.
+   */
+  public void doMouse(String action, double x, double y) {
+    if (action.equals("clicked")) {
+      // checks if a card is being displayed
+      if (card != null) {
+        // checks if the click is on a card image
+        if (card.onImage(x, y)) {
+          clearTextPane();
+        }
+      }
+    }
   }
 }

@@ -13,8 +13,13 @@ public class Card {
   private double cardMonetaryValue;
   private String cardImage;
   private static final String DEFAULTIMAGE = "default.jpg";
-  private boolean cardDisplayed;
-
+  
+  private final int LOCX = 100;
+  private final int LOCY = 100;
+  private final double WIDTH = 200;
+  private final double HEIGHT = 250;
+  
+  
   /**
    * Constructor for objects of class Card.
    */
@@ -22,7 +27,6 @@ public class Card {
     // intailise the variables for card details
     this.cardName = name;
     this.cardMonetaryValue = CardValue;
-    this.cardDisplayed = false;
     
     // if the user selects cancel instead of and image
     if (image == null) {
@@ -59,22 +63,23 @@ public class Card {
   }
   
   /**
-   * Displays card image in graphics pane
+   * Displays card image in graphics pane.
    */
   public void displayImage() {
-    // declare and initialise constant variables
-    final int LOCX = 100;
-    final int LOCY = 100;
-    final double WIDTH = 200;
-    final double HEIGHT = 250;
-    
     UI.drawImage(this.cardImage, LOCX, LOCY, WIDTH, HEIGHT); // print image
   }
   
   /**
-   * Setter for boolean cardDisplayed
+   * Checks if x y cords are in range of the card image.
+
+   * @return boolean if cords in range
    */
-  public void setDisplay(boolean displayState) {
-    this.cardDisplayed = displayState;
+  public boolean onImage(double x, double y) {
+    // checks if the x, y are in range
+    if ((x >= LOCX) && (x <= LOCX + WIDTH) && (y >= LOCY) && (y <= LOCY + HEIGHT)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
