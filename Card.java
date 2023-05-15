@@ -4,7 +4,7 @@ import ecs100.*;
  * Creates Cards
  *
  * @author Janelle Woolley
- * @version 1.0 09/05/23
+ * @version 1.0 15/05/23
  */
 
 public class Card {
@@ -54,9 +54,27 @@ public class Card {
   public void printDetails() {
     UI.println("---------------------");
     UI.println("Name: " + this.cardName);
-    UI.println("Monetary Value: " + this.cardMonetaryValue);
+    UI.println("Monetary Value: $" + this.cardMonetaryValue);
     UI.println("---------------------");
   }
   
-  // create method to display card image in GUI
+  /**
+   * Displays card image in GUI
+   */
+  public void displayImage() {
+    // declare and initialise constant variables
+    final int LOCX = 100;
+    final int LOCY = 100;
+    final double WIDTH = 200;
+    final double HEIGHT = 250;
+    
+    UI.drawImage(this.cardImage, LOCX, LOCY, WIDTH, HEIGHT); // print image
+  }
+  
+  /**
+   * Setter for boolean cardDisplayed
+   */
+  public void setDisplay(boolean displayState) {
+    this.cardDisplayed = displayState;
+  }
 }

@@ -5,7 +5,7 @@ import java.util.*;
  * Buttons and Displaying images and Text
  *
  * @author Janelle Woolley
- * @version 1.0 10/05/23
+ * @version 1.0 15/05/23
  */
 
 public class GUI {
@@ -24,7 +24,7 @@ public class GUI {
     UI.addButton("Add Card", this::addCard);  // add card button
       // hide details button
     UI.addButton("Show All Details", this::printAll);  // show all cards details buttons
-      // search button
+    UI.addButton("Search", this::search);  // search button
     // create mouse listener
   }
   
@@ -124,7 +124,25 @@ public class GUI {
     cardStack.printAllDetails();
   }
   
+  /**
+   * Displays details and image of a card the user wants
+   */
+  public void search() {
+    String findCard = UI.askString("Enter card name to search for: "); // ask for input
+    
+    // checks if input is in hashmap
+    if (cardStack.compareCard(findCard.toUpperCase())) {
+      // gets the current card
+      card = cardStack.getCard();
+      
+      card.printDetails(); // prints details
+      card.displayImage(); // displays image
+      card.setDisplay(true); // sets display to true 
+    } else { // otherwise print error message
+      UI.println("Card not Found!");
+    }
+  }
+  
   // method to clear text pane
   // method to clear graphics pane
-  // method to diplay card image & details 
 }
