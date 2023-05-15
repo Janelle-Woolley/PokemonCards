@@ -19,14 +19,14 @@ public class GUI {
     cardStack = new CardHashMap(); // initialise the hashmap
     UI.initialise(); // initialise GUI
     
-    // create buttons
+    // initialise buttons
     UI.addButton("Quit", UI::quit);  // quit button
     UI.addButton("Add Card", this::addCard);  // add card button
-    UI.addButton("Hide Details", this::clearTextPane);  // hide details button
     UI.addButton("Show All Details", this::printAll);  // show all cards details buttons
+    UI.addButton("Hide Details", this::clearTextPane);  // hide details button
     UI.addButton("Search", this::search);  // search button
     
-    // create mouse listener
+    // initilaise mouse listener
     UI.setMouseListener(this::doMouse);
   }
   
@@ -44,7 +44,8 @@ public class GUI {
       // checks if the input is just whitespaces
       if (name.isBlank()) {
         name = UI.askString("Enter the card name: ");
-      } else if (cardStack.compareCard(name.toUpperCase())) { // checks if the input is already in the hashmap
+        // checks if the input is already in the hashmap
+      } else if (cardStack.compareCard(name.toUpperCase())) { 
         UI.println("Card already in collection");
         name = UI.askString("Enter a new card name: ");
       } else { // otherwise input is valid and loop ends
@@ -76,19 +77,20 @@ public class GUI {
     
     // loops until input is valid
     while (gettingMonValue) {
-      isDouble = new Scanner(checkMonValue); // creates new scanner object to ensure buffer gets cleared
+      // creates new scanner object to ensure buffer gets cleared
+      isDouble = new Scanner(checkMonValue);      
       
       // checks if input contains a double
       if (isDouble.hasNextDouble()) {
         monValue = isDouble.nextDouble();
         // checks if the input is the range of expected options
-        if (monValue > MIN_MON_VALUE && monValue < MAX_MON_VALUE){  
+        if (monValue > MIN_MON_VALUE && monValue < MAX_MON_VALUE) {  
           gettingMonValue = false;
         } else { // otherwise continue looping
           checkMonValue = UI.askString("Enter the card's monetary value (0-5275000): ");
         }
       } else { // otherwise continue looping
-          checkMonValue = UI.askString("Enter the card's monetary value: ");
+        checkMonValue = UI.askString("Enter the card's monetary value: ");
       }
     }
     
@@ -123,6 +125,8 @@ public class GUI {
    * Prints out all the cards details.
    */
   public void printAll() {
+    clearTextPane();
+    clearGraphicsPane();
     cardStack.printAllDetails();
   }
   
@@ -134,12 +138,12 @@ public class GUI {
     
     // checks if input is in hashmap
     if (cardStack.compareCard(findCard.toUpperCase())) {
-      // gets the current card
-      card = cardStack.getCard();
-      
       // clear screen for printing
       clearTextPane();
       clearGraphicsPane();
+      
+      // gets the current card
+      card = cardStack.getCard();
       
       card.printDetails(); // prints details
       card.displayImage(); // displays image

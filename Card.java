@@ -14,25 +14,25 @@ public class Card {
   private String cardImage;
   private static final String DEFAULTIMAGE = "default.jpg";
   
-  private final int LOCX = 100;
-  private final int LOCY = 100;
-  private final double WIDTH = 200;
-  private final double HEIGHT = 250;
+  private static final int LOCX = 100;
+  private static final int LOCY = 100;
+  private static final double WIDTH = 200;
+  private static final double HEIGHT = 250;
   
   
   /**
    * Constructor for objects of class Card.
    */
-  public Card(String name, double CardValue, String image) {
+  public Card(String name, double cardValue, String image) {
     // intailise the variables for card details
     this.cardName = name;
-    this.cardMonetaryValue = CardValue;
+    this.cardMonetaryValue = cardValue;
     
     // if the user selects cancel instead of and image
     if (image == null) {
-        this.cardImage = DEFAULTIMAGE;
+      this.cardImage = DEFAULTIMAGE;
     } else {
-        this.cardImage = image;
+      this.cardImage = image;
     }
   }
   
@@ -44,7 +44,7 @@ public class Card {
   }
   
   /**
-   * Getter for card name
+   * Getter for card name.
 
    * @return cardName
    */

@@ -17,13 +17,17 @@ public class CardHashMap {
   public CardHashMap() {
     cardHashMap = new HashMap<Integer, Card>(); //initalise the hashmap
     currentId = 0; // intalise the currentId
+    
+    // add default cards
+    addCard("PIKACHU", 32.69, "pikachu.jpg");
+    addCard("EEVEE", 184, null);
   }
   
   /**
    * Adds a card to the hashmap.
    */
   public void addCard(String name, double monValue, String image) {
-    currentId++;// update current id
+    currentId++; // update current id
     cardHashMap.put(currentId, new Card(name, monValue, image)); // add card to hashmap
   }
   
