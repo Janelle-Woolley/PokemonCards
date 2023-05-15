@@ -3,7 +3,7 @@ import java.util.HashMap;
  * Holds Cards in a HashMap.
  *
  * @author Janelle Woolley
- * @version 1.0 09/05/23
+ * @version 1.0 15/05/23
  */
 
 public class CardHashMap {
@@ -38,6 +38,7 @@ public class CardHashMap {
     for (int cardId : cardHashMap.keySet()) {
       // checks if parameter matches the card's name
       if (cardHashMap.get(cardId).getCardName().equals(name)) {
+        currCard = cardHashMap.get(cardId); // sets card in hashmap to the current card
         return true; 
       }
     }
@@ -54,5 +55,14 @@ public class CardHashMap {
       currCard = cardHashMap.get(cardId);
       currCard.printDetails();
     }
+  }
+  
+  /**
+   * Getter for the current card.
+
+   * @return currCard
+   */
+  public Card getCard() {
+    return this.currCard;
   }
 }
